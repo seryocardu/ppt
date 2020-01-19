@@ -6,7 +6,7 @@ public class MoveWords{
     public static final int GANA = 1;
     public static final int PIERDE = 2;
 
-    private static final String[] validMoves = {"TIJERAS", "PAPEL", "PIEDRA"};
+    private static final String[] validMoves = {"TIJERAS", "LAGARTIJA", "SPOCK", "PAPEL", "PIEDRA"};
     private static final String[] validCommands = {"SALIR", "HELP"};
 
     private Random rnd;
@@ -60,13 +60,19 @@ public class MoveWords{
     }
 
     public static int checkWinner(String first, String second){
-	    int first_i, second_i;
+    	int first_i, second_i;
 
 	    first_i = getIndex(first);
 	    second_i = getIndex(second);
-
+	    	    
 	    if (first_i == second_i) return EMPATE;
-	    
+	   
+	    if (first_i+1 == 1 && second_i == 3) return GANA;  //nuevo caso
+	    if (first_i+1 == 2 && second_i == 4) return GANA;  //nuevo caso
+	    if (first_i+1 == 3 && second_i == 0) return GANA;  //nuevo caso
+	    if (first_i+1 == 4 && second_i == 1) return GANA;  //nuevo caso
+	    if (first_i+1 == 5 && second_i == 2) return GANA;  //nuevo caso
+	    	    
 	    return (( (first_i +1) % validMoves.length ) == second_i ) ? GANA: PIERDE;
 	}
 	
